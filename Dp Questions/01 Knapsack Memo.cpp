@@ -16,7 +16,7 @@ if(w[n-1]> W){
 
 }
 else
-return p[n][w]= max(
+return dp[n][W]= max(
     p[n-1]+ks(w,p,W-w[n-1],n-1), 
     ks(w,p,W,n-1));
 
@@ -24,13 +24,12 @@ return p[n][w]= max(
 
 int main(){
     
-     for (int i = 0; i < 10; i++)
-        for (int j = 0; j < 10; j++)
-            dp[i][j] = -1;
-	int p[]= {60,100,120};
-	int w[]= {10,20,30 };
+    memset(dp,-1,sizeof(dp));
+	int p[]= {6,1,12};
+	int w[]= {1,2,3 };
 	int n = sizeof(p) / sizeof(p[0]);
-	int W= 50;
+	int W= 3;
 	cout<<ks(w,p,W,n);
+	
 	
 }
