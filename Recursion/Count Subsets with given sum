@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+int count=0;
+void ssCount(int arr[], int n, int sum, int temp, int i)
+{
+    if(temp==sum){
+        count++;
+        return;
+    }
+    
+    if(i==n){
+    return;
+    }
+
+ssCount(arr,n,sum,temp+arr[i], i+1);
+ssCount(arr,n,sum,temp,i+1);
+}
+
+int main()
+{
+	int arr[] = {3 ,12,2,13,14};
+
+	int n = sizeof(arr) / sizeof(arr[0]);
+	ssCount(arr,n,15,0,0);
+	cout<<count;
+	return 0;
+}
