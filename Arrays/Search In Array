@@ -1,0 +1,12 @@
+ int search(int arr[], int N, int X)
+    {
+        int index= -1;
+        for(int i=0; i<N ; i++){
+            if(arr[i]==X){
+                index= i;
+                break;
+            }
+        }
+        // Your code here
+        return index;
+    }
