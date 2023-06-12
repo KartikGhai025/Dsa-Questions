@@ -1,0 +1,60 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void merger(int arr[], int l, int m , int h){
+    int n1= l;
+    int n2= m+1;
+    int n= h-l+1;
+    int brr[n];
+    int i;
+ 
+        while(n1<=m && n2<=h){
+        if(arr[n1]<=arr[n2]){
+            brr[i]=arr[n1];
+            n1++;
+        }
+        else{
+            brr[i]=arr[n2];
+            n2++;
+        }
+            i++;
+        
+        
+    }
+    while(n1<=m){
+        brr[i]=arr[n1];
+        n1++;
+        i++;
+    }
+    while(n2<=h){
+        brr[i]=arr[n2];
+        n2++;
+        i++;
+    }
+    i=0;
+    for(int j=l; j<=h; j++){
+        arr[j]=brr[i];
+        i++;
+    }
+    
+}
+
+void mergeSort(int arr[], int l, int r){
+    if(r>l)
+    {
+        int m= l+(r-l)/2;
+        mergeSort(arr,l,m);
+        mergeSort(arr,m+1,r);
+        merger(arr,l,m,r);
+    }
+}
+
+int main() {
+   int arr[]= {100,201,1,3,5,7,2,4,6,902,234};
+   int n= sizeof(arr)/sizeof(arr[0]);
+    mergeSort(arr,0,n-1);
+   for(int i=0; i<n ;i++){
+       cout<<arr[i]<<endl;
+   }
+    return 0;
+}
