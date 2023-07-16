@@ -1,0 +1,58 @@
+using System;
+
+public class HelloWorld
+{
+    public static int CountInversion(int[] arr, int l, int m, int r)
+    {
+        int[] brr = new int[r - l + 1];
+        int i = l, j = m + 1, k = 0, count = 0;
+
+        while (i <= m && j <= r) 
+        {
+            if (arr[i] < arr[j])
+            {
+                brr[k++] = arr[i++];
+            }
+            else
+            {
+                brr[k++] = arr[j++];
+                count+= (m-i+1); 
+            }
+        }
+
+        while (i <= m)
+        {
+            brr[k++] = arr[i++];
+        }
+        while (j <= r)
+        {
+            brr[k++] = arr[j++];
+        }
+
+        for (int x = 0; x < brr.Length; x++)
+        {
+            arr[l + x] = brr[x];
+        }
+
+        return count;
+    }
+
+    public static int SortAndCount(int[] arr, int l, int h)
+    {
+        int count = 0;
+        if (l < h)
+        {
+            int m = (l + h) / 2;
+            count += SortAndCount(arr, l, m);
+            count += SortAndCount(arr, m + 1, h);
+            count += CountInversion(arr, l, m, h);
+        }
+        return count;
+    }
+
+    public static void Main(string[] args)
+    {
+        int[] arr = new int[5] { 2, 4, 1, 3, 5 };
+        Console.WriteLine(SortAndCount(arr, 0, arr.Length - 1));
+    }
+}
