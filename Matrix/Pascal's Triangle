@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<vector<int>> pascalTriangle(int m){
+    vector<vector<int>>ans;
+    
+    for(int i=0; i<=m; i++){
+        vector<int>temp;
+        for(int j=0; j<i; j++){
+            if(j==0 || j==i){
+                temp.push_back(1);
+                
+            }
+            else{
+                temp.push_back(ans[i-1][j]+ans[i-1][j-1]);
+            }
+        }
+        ans.push_back(temp);
+    }
+    
+    return ans;
+    
+}
+int main() {
+   vector<vector<int>> ans= pascalTriangle(5);
+for(auto row: ans){
+    for(int i: row){
+        cout<<i<<" ";
+    }
+    cout<<endl;
+}
+    return 0;
+}
