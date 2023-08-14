@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int leastAvg(int arr[], int n, int k){
+
+   int j=k-1;
+    int sum=0;
+    for(int i=0; i<k ; i++){
+        sum+=arr[i];
+        }
+    
+       int curr=sum;
+    
+    for(int i=k; i<n; i++){
+        sum= sum-arr[i-k];
+        sum+=arr[i];
+       
+        if(sum<curr){
+            
+            curr= min(sum, curr);
+        j=i;
+        }
+            
+        }
+    
+    return j;
+    
+}
+
+int main() {
+    int arr[] = {3, 7, 5, 20, -10, 0, 12};
+    int k=2;
+    
+int val= leastAvg(arr,7,k);
+   cout<<"Subarray between indexes "<<val-k+1<<" and "<<val;
+
+    return 0;
+}
