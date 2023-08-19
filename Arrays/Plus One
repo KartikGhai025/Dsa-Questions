@@ -1,0 +1,38 @@
+//https://leetcode.com/problems/plus-one/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<int> plusOne(vector<int> nums){
+ int i = nums.size()-1;
+ int carry=1;
+ while(i>=0 && carry==1){
+     if(nums[i]==9){
+         nums[i]=0;
+         i--;
+     }
+     else{
+         nums[i]++;
+         carry=0;
+     }
+ }
+    if(carry==1){
+        nums[0]==0;
+        nums.insert(nums.begin(), 1);
+    }
+    
+    return nums;
+    
+}
+
+int main() {
+    vector<int> arr{4,3,2,1};
+    
+    vector<int> ans= plusOne(arr);
+    
+    for(int i: ans){
+        cout<<i<<" ";
+    }
+
+    return 0;
+}
