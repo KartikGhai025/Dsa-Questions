@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+pair<int, int> targetSum(int arr[], int t, int n){
+unordered_map<int, int> mp;
+pair<int, int> ans;
+for(int i=0; i<=n; i++){
+if(t-arr[i]== arr[mp[t-arr[i]]] && i !=mp[t-arr[i]] ){
+ans.first= mp[t- arr[i]];
+ans.second= i; 
+
+return ans; 
+}
+if(i==n)
+break;
+
+mp[arr[i]]=i;
+}
+
+return ans;
+}
+
+
+int main(){
+int arr[]={3,3};
+pair<int, int> ans= targetSum(arr, 6,2);
+cout<<ans.first<<" "<<ans.second;
+
+
+}
