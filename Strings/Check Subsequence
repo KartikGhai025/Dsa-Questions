@@ -1,0 +1,22 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+bool checkSubSeq(string str, string z){
+    int i = 0, j = 0;
+    
+    while (i < str.length() && j < z.length()) {
+        if (str[i] == z[j]) {
+            i++;
+            j++;
+        } else {
+            i++;
+        }
+    }
+    
+    return j == z.length();
+}
+
+int main() {
+    cout << checkSubSeq("abcd", "ap");
+    return 0;
+}
