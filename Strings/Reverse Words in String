@@ -1,0 +1,37 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+string reverseStr(string str){
+    stack<string> stk;
+    string temp;
+    
+    for(int i=0; i<str.length(); i++){
+        if(str[i]!= ' '){
+            temp += str[i];
+        }
+        else {
+            stk.push(temp);
+            temp = "";
+        }
+    }
+    stk.push(temp); 
+    
+    str = "";
+    
+    while (!stk.empty()) {
+        str += stk.top();
+        stk.pop();
+        if (!stk.empty()) {
+            str += " ";
+        }
+    }
+    
+    return str;
+}
+
+int main() {
+    string str = "how are you? ";
+    
+    cout << reverseStr(str);
+    return 0;
+}
