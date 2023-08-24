@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+string kWords(string str, int k)
+{
+    int i=0,n=0;
+    while(i<str.length())
+    {
+        
+        if(n==k){
+            break;
+        }
+        if(str[i]==' ')
+        n++;
+         
+         i++;
+        
+    }
+    if(i==str.length()){
+        return str;
+    }
+    
+    return str.substr(0, i-1);
+    
+    
+    
+}
+
+int main() {
+    string s;
+    
+    getline(cin,s);
+    
+    
+    string s1= "hello what are you doing?";
+    
+    cout<<kWords(s,4);
+
+    return 0;
+}
