@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+
+int leftMostOccurence(string str){
+    int temp[256]= {-1};
+    int ans = str.length()+1;
+    memset(temp, -1, sizeof(temp));
+    for(int i=0; i<str.length(); i++){
+        if(temp[str[i]]==-1){
+            temp[str[i]] = i;
+        }
+        else{
+            ans = min(ans, temp[str[i]]);
+        }
+        
+    }
+    
+    return ans;
+    
+}
+
+int main() {
+    string str= "abcdbsdca";
+    
+    cout<<str[leftMostOccurence(str)];
+    return 0;
+}
