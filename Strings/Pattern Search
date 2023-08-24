@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int patternSearch1(string s1, string s2){
+    int k;
+    int j;
+    for(int i=0; i<s1.length(); i++){
+        if(s1[i]==s2[j])
+        for(j=0; j<s2.length(); j++){
+            if(s1[j+i]!= s2[j])
+            break;
+            
+        }
+        if(j==s2.length())
+        return i;
+        
+        j=0;
+    }
+    
+    return -1;
+      }
+
+int patternSearch2(string s1, string s2) {
+    unordered_map<string, int> mp;
+    int n = s2.length();
+    mp[s2]++;
+    
+    string temp = s1.substr(0, n); 
+    
+    for (int i = 0; i <= s1.length() - n; i++) {
+        if (mp[temp] == 1) {
+            return i;
+        }
+        
+        temp = temp.substr(1); 
+        temp += s1[i + n];     
+    }
+    
+    return -1;
+}
+
+
+int main() {
+    string s1= "abcdef", s2="de";
+    
+    cout<<patternSearch2(s1,s2);
+
+    return 0;
+}
