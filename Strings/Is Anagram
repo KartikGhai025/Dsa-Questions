@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+bool isAnagram1(string s1, string s2){
+    if(s1.length() != s2.length())
+    return false;
+    
+    sort(s1.begin(), s1.end());
+    sort(s2.begin(), s2.end());
+    
+    if(s1==s2)
+    return true;
+    
+    return false;
+}
+
+
+
+bool isAnagram2(string s1, string s2){
+    int count[256]= {0};
+    
+    for(int i=0; i< s1.length(); i++){
+        count[s1[i]]++;
+        count[s2[i]]--;
+        
+    }
+    
+    for(int i=0; i<256; i++){
+        if(count[i])
+        return false;
+    }
+    
+    
+    return true;
+    
+    
+}
+
+int main() {
+    cout << isAnagram2("abcdp", "padcb");
+    return 0;
+}
