@@ -1,0 +1,48 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+bool isPalindrome1(string str){
+    
+    int n= str.length();
+    
+    for(int i=0; i<n/2; i++){
+        if(str[i]!=str[n-i-1]){
+            return false;
+        }
+    }
+    return true;
+    
+}
+
+
+bool isPalindrome2(string str){
+    int n= str.length();
+    
+    if(str.substr(0,n/2)== str.substr(n/2 +1,n)){
+        return true;
+    }
+    
+    return false;
+    
+    
+}
+
+
+bool isPalindrome3(string str){
+    string temp= str;
+    reverse(temp.begin(),temp.end());
+    
+    if(str== temp)
+    return true;
+    
+    return false;
+    
+    
+}
+
+int main() {
+cout<<isPalindrome3("aca");
+
+    return 0;
+}
