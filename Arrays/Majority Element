@@ -1,0 +1,24 @@
+int majorityElement(vector<int>& nums) {
+        // sort(nums.begin(),nums.end());
+        // int n=nums.size();
+        // return nums[n/2];
+        
+        int currMaj= nums[0];
+        int count =0;
+        
+        for(int i=0; i<nums.size(); i++)
+        {
+            if(!count){
+                currMaj= nums[i];
+            }
+            
+            if(currMaj== nums[i])
+                count++;
+            
+            else 
+                count--;
+        }
+        
+        return currMaj;
+        
+    }
