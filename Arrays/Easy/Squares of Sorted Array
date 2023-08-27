@@ -1,0 +1,40 @@
+//https://leetcode.com/problems/squares-of-a-sorted-array
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<int> squareArr(vector<int> nums){
+    vector<int> ans;
+       int i=0, j=nums.size()-1;  
+       while(i<=j &&  j>=0){
+           if(abs(nums[i])>abs(nums[j])){
+               ans.insert(ans.begin(), nums[i]*nums[i]);
+               i++;
+           }
+           else{
+            ans.insert(ans.begin(), nums[j]*nums[j]);
+             j--;
+           }   
+       }
+       return ans;    
+}
+
+vector<int> sortedSquares(vector<int>& nums) {
+        vector<int> squareArr;
+        for(int i=0; i<nums.size();i++){
+            squareArr.push_back(nums[i] * nums[i]);   
+        }
+        sort(squareArr.begin(), squareArr.end());
+        return squareArr;        
+    }
+
+int main() {
+  vector<int> arr{ -4,-1,0,3,10};
+  vector<int> ans= squareArr(arr);
+  for(int i: ans){
+    cout<<i<<" ";    
+}
+    
+    return 0;
+}
