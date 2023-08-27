@@ -1,0 +1,24 @@
+//https://leetcode.com/problems/fibonacci-number
+
+int fib(int n) {
+        int a=0;
+        int b=1;
+        
+        if(n==1)
+            return 1;
+        if(n==2)
+            return b;
+        
+        int fSum=0;
+        
+        for(int i=2; i<=n; i++)
+        {
+            fSum= a+b;
+            a=b;
+            b=fSum;
+                        
+        }
+        
+        return fSum;
+        
+    }
