@@ -1,0 +1,21 @@
+//https://leetcode.com/problems/valid-palindrome/
+
+
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        int i, n= s.length(), j=0;
+        
+        for(i=0; i<n;i++){
+            if(isalpha(s[i]))
+                s[j++]=tolower(s[i]);
+            if(isdigit(s[i]))
+                s[j++]=s[i];
+        }
+        s= s.substr(0,j);
+        string temp=s;
+        reverse(temp.begin(),temp.end());
+        
+        return s== temp;
+    }
+};
