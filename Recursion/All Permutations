@@ -1,0 +1,26 @@
+// https://leetcode.com/problems/permutations/ 
+
+class Solution {
+public:
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int>> ans;
+        permuteHelper(ans,nums,0);
+        
+        return ans;
+        
+    }
+    
+    void permuteHelper(vector<vector<int>> &ans, vector<int> &nums, int pos){
+        if(pos>= nums.size()){
+            ans.push_back(nums);
+            return;
+        }
+        
+        
+        for(int i=pos; i<nums.size(); i++){
+            swap(nums[i],nums[pos]);
+            permuteHelper(ans,nums,pos+1);
+            swap(nums[i],nums[pos]);
+        }
+    }
+};
