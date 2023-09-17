@@ -1,0 +1,67 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+vector<int> removeDups(int arr[], int n){
+    int i, j=0, cnt=0;
+    vector<int> ans;
+
+    sort(arr, arr+n);
+
+    for(i=0 ; i<n-1; i++ ){
+        if(arr[i]!= arr[i+1]){
+            ans.push_back(++cnt);
+            arr[j++]= arr[i];
+            cnt=0;
+            }
+        else 
+        cnt++;
+    }
+    arr[j]=arr[n-1];
+    ans.push_back(++cnt);
+    
+    return ans;
+    
+}
+
+int deleteEarn(int arr[], int n){
+    vector<int> freq = removeDups(arr, n);
+    int dp[freq.size()+1];
+dp[0]= arr[0]*freq[0];
+if(arr[1]>arr[0]+1){
+    dp[1]=dp[0]+arr[1]*freq[1];
+}
+else{
+    dp[1]=max(dp[0],arr[1]*freq[1]);
+}
+   for(int i=2; i<n; i++){
+       int temp=arr[i]*freq[i];
+       if(arr[i]>arr[i]+1){
+           dp[i]=dp[i-1]+temp;
+       }
+       
+       else{
+           dp[i]= max(temp+dp[i-2], dp[i-1]);
+           
+       }
+   } 
+    
+    return dp[n-1];
+    
+}
+
+int main() {
+   int arr[]= {2,2,1,4,4,3,4,5,6,6};
+   int n = sizeof(arr)/sizeof(arr[0]);
+   
+   int ans= deleteEarn(arr,n);
+   cout<<ans;
+   
+   /*
+   vector<int>ans= removeDups(arr,n);
+   int i=0;
+   for(int x: ans)
+   cout<<arr[i++]<<" "<<x<<endl;*/
+
+    return 0;
+}
