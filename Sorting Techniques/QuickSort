@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int partitionFun(int arr[], int low, int high){
+    int i= low-1, j;
+    int pivot= arr[high];
+    for(j= low; j<= high-1; j++){
+        if(arr[j]<pivot){
+            swap(arr[++i], arr[j]);
+        }
+    }
+    swap(arr[++i], arr[high]);
+    return i;
+}
+
+void quickSort(int arr[], int low, int high){
+    if(low<high){
+       int p= partitionFun(arr,low,high);
+        quickSort(arr,low,p-1);
+        quickSort(arr,p+1,high);
+    }
+}
+
+int main() {
+    int arr[]= {4,6,8,7,9,3,1,2,10,5};
+   quickSort(arr,0,9);
+    
+    for(int i=0; i<10; i++){
+        cout<<arr[i]<<" ";
+    }
+      return 0;
+}
